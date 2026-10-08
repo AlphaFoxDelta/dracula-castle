@@ -1,11 +1,14 @@
 # dracula-castle
 
-A text adventure game. Explore Dracula's castle, collect 6 items, then face
-Dracula himself. Win if you are prepared. Lose if you are not.
+A text adventure game. Explore Dracula's castle, arm yourself, and face
+Dracula himself in a real fight. Win if you are prepared and clever. Lose
+if you are not.
 
-This was my first real Python project, written for a school assignment. I am
-keeping it here exactly for that reason: it is where I started. Everything
-else on my profile came after this.
+This was my first real Python project, written for a school assignment. I
+have since expanded it well beyond the homework: a bigger castle, a boss
+fight, traps, locked doors, and a save system. I am keeping it here exactly
+for that reason: it is where I started, and it shows how far a little
+practice goes.
 
 ## How to play
 
@@ -13,31 +16,40 @@ else on my profile came after this.
 python3 dracula_castle.py
 ```
 
-Move with `go North`, `go South`, `go East`, `go West`. Pick things up with
-`get <item name>`. Type `quit` or `exit` to stop.
+Move with `go North`, `go South`, `go East`, `go West`, `go Up`, `go Down`.
+Pick things up with `get <item name>`. Type `help` for the full command
+list, `save` to save your game, and `quit` to stop.
 
-There are 6 items hidden around the castle: the Sunlight Amulet, the
-Crucifix, Holy Water, the Garlic Necklace, the Wooden Stake, and the Silver
-Dagger. Find them all before you walk into Dracula's Lair, or it does not
-end well for you.
+The castle has 12 rooms. Six weapons are hidden through the halls: the
+Sunlight Amulet, the Crucifix, Holy Water, the Garlic Necklace, the Wooden
+Stake, and the Silver Dagger. The deeper rooms hold supplies like a Healing
+Tonic and a Sacred Chalice, plus a Chapel Key for a locked door. Watch your
+step: not every room is safe.
 
-## What I cleaned up
+When you are ready, walk north from the Secret Passage into Dracula's Lair.
+The fight is turn-based. Each weapon hits differently: the stake hits
+hardest but breaks after two uses, holy water burns but the vial runs dry,
+garlic and the crucifix weaken his attacks. He hits back every turn, so
+spending a turn to heal is sometimes the right call. You can flee back to
+the passage to regroup, but he catches his breath too.
 
-The version I turned in for class had a few bugs I have since fixed:
+One tip: ring the bell in the Bell Tower before you go in.
 
-- Typing `get` in a room with no item crashed the game. It does not anymore.
-- Typing `go` without a direction crashed the game. It does not anymore.
-- The status screen now shows your exits as a readable list and tracks how
-  many of the 6 items you have collected.
+## What I cleaned up from the school version
 
-The game itself is unchanged. Same rooms, same items, same Dracula.
+The version I turned in for class had a few bugs:
+
+- Typing `get` in a room with no item crashed the game.
+- Typing `go` without a direction crashed the game.
+- The status screen was a raw Python list. Now it reads like a game.
+
+The original six rooms and six items are all still there, in the same
+places. The expansion just gave them a bigger castle to sit in.
 
 ## What I would do differently now
 
-Honestly, almost everything. A dictionary of rooms with string keys works,
-but a Room class would be cleaner. The game state lives in globals, which
-made the cleanup harder than it needed to be. And there is no save feature,
-no combat, no real puzzles, just walking and collecting.
-
-But that is the point of keeping it. It works, it is finished, and it
-reminds me how far a little practice goes.
+A Room class instead of nested dictionaries. A proper game state object
+instead of a dict passed between functions. And a real parser instead of
+startswith checks, so "take the amulet" works as well as "get sunlight
+amulet." But it works, it is finished, and it is fun, which is more than
+most first projects get to say.
